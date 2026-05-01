@@ -9,40 +9,6 @@ import io
 
 st.set_page_config(page_title="PULSE AI Scheduler", layout="wide")
 
-# ==========================================
-# SECURITY: THE BOUNCER BLOCK
-# ==========================================
-def check_password():
-    """Returns `True` if the user had the correct password."""
-    def password_entered():
-        # Checks the entered password against the Streamlit Secret
-        if st.session_state["password"] == st.secrets["app_password"]:
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]  # Delete it from memory for security
-        else:
-            st.session_state["password_correct"] = False
-
-    if "password_correct" not in st.session_state:
-        # First run: Show the login screen
-        st.title("🔒 PULSE AI Scheduler - Secured")
-        st.text_input("Please enter the password to access the engine:", type="password", on_change=password_entered, key="password")
-        return False
-    elif not st.session_state["password_correct"]:
-        # Wrong password: Show error and let them try again
-        st.title("🔒 PULSE AI Scheduler - Secured")
-        st.text_input("Please enter the password to access the engine:", type="password", on_change=password_entered, key="password")
-        st.error("Incorrect password. Please try again.")
-        return False
-    else:
-        # Password correct: Let them in!
-        return True
-
-# If the password is wrong or hasn't been entered, STOP the app from loading anything else.
-if not check_password():
-    st.stop()
-# ==========================================
-
-# (THE REST OF YOUR APP CODE CONTINUES HERE EXACTLY AS BEFORE)
 st.title("PULSE AI Scheduling Engine")
 
 # ==========================================
