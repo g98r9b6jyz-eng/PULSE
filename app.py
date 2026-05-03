@@ -9,7 +9,7 @@ import io
 
 st.set_page_config(page_title="PULSE AI Scheduler", layout="wide")
 
-st.title("PULSE AI Scheduling Engine")
+st.title("P.U.L.S.E. (AI Provider Utilization & Logistics Scheduling Engine)")
 
 # ==========================================
 # UI: DATA INPUTS (Replaces Colab Prompts)
